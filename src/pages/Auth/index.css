@@ -1,5 +1,5 @@
 
-.login-form {
+.auth-form {
     height: 80vh;
     display: flex;
     justify-content: center;
@@ -8,28 +8,28 @@
     row-gap: 1rem;
 }
 
-.login-form form {
+.auth-form form {
     display: flex;
     flex-direction: column;
     width: 300px;
 }
 
-.login-form form .input-group {
+.auth-form form .input-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
 
-.login-form form label {
+.auth-form form label {
     flex: 1;
 }
 
-.login-form form input {
+.auth-form form input {
     flex: 2;
     padding: 5px;
 }
 
-.login-form form button {
+.auth-form form button {
     border-radius: 5px;
     padding: 10px;
     background-color: #4CAF50;

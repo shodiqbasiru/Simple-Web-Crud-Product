@@ -6,8 +6,14 @@ const AuthService = () => {
     return data;
   };
 
+  const register = async (payload) => {
+    const { data } = await axiosInstance.post("/auth/register", payload);
+    return data;
+  }
+
   return {
     login,
+    register,
   };
 };
 
