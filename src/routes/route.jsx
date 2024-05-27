@@ -18,11 +18,17 @@ const router = createBrowserRouter([
         element: <ProductForm />,
       },
       {
-        path: "/login",
-        element: <Login />,
-      }
+        path: "edit/:id",
+        element: <ProductForm />,
+      },
+    
     ]
   },
+
+  {
+    path: "/login",
+    element: <Login />,
+  }
    
 ]);
 

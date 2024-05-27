@@ -17,7 +17,6 @@ const Login = () => {
       const response = await authService.login(data);
       if (response.statusCode === 200) {
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("storeId", response.data.storeId);
         navigate("/");
       }
     } catch (error) {
@@ -27,13 +26,15 @@ const Login = () => {
 
   return (
     <div className="login-form">
+      <Link to="/">Home</Link>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="input-group">
-          <label htmlFor="username">Username</label>
-          <input {...register("username")} type="text" id="username" />
+          <label htmlFor="emailOrPhone">Email / Phone Number</label>
+          <input {...register("emailOrPhone")} type="text" id="emailOrPassword" />
         </div>
         <div className="input-group">
-          <label htmlFor="price">Password</label>
+          <label htmlFor="password">Password</label>
           <input {...register("password")} type="password" id="password" />
         </div>
         <button type="submit">Login</button>

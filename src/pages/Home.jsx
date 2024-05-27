@@ -1,14 +1,15 @@
 import Navbar from "../components/Navbar.jsx";
 import { Outlet } from "react-router-dom";
+import { AuthProvider } from "../context/AuthContext";
 
 const Home = () => {
   return (
-    <div>
+    <AuthProvider>
       <Navbar />
       <div>
         <Outlet />
       </div>
-    </div>
+    </AuthProvider>
   );
 };
 
