@@ -39,20 +39,20 @@ const Register = () => {
           <div className="grid">
             <div className="input-group">
               <label htmlFor="name">Name</label>
-              <input {...register("name")} type="text" id="name" />
+              <input {...register("name")} type="text" id="name" placeholder="Enter your name" />
             </div>
             <div className="input-group">
               <label htmlFor="email">Email </label>
-              <input {...register("email")} type="text" id="email" />
+              <input {...register("email")} type="text" id="email" placeholder="Enter your email" />
             </div>
           </div>
           <div className="input-group">
             <label htmlFor="phoneNumber">Phone Number</label>
-            <input {...register("phoneNumber")} type="text" id="phoneNumber" />
+            <input {...register("phoneNumber")} type="text" id="phoneNumber" placeholder="Enter your phone number" />
           </div>
           <div className="input-group">
             <label htmlFor="password">Password</label>
-            <input {...register("password")} type="password" id="password" />
+            <input {...register("password")} type="password" id="password" placeholder="Enter your password" />
           </div>
           <button type="submit">Register</button>
           <p>

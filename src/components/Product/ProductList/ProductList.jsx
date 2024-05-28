@@ -7,13 +7,17 @@ import { FaEdit, FaPlus, FaSearch } from "react-icons/fa";
 import { FaEye, FaTrash } from "react-icons/fa6";
 import { useContext } from "react";
 import AuthContext from "../../../context/AuthContext.jsx";
+import ProductModal from "../ProductModal/ProductModal.jsx";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const productService = useMemo(() => ProductService(), []);
   const baseImgUrl = "http://localhost:8080";
   const { isLogin, setIsLogin } = useContext(AuthContext);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,6 +54,15 @@ const ProductList = () => {
     })
       .format(price)
       .slice(0, -3);
+  };
+
+  const handleOpenModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -96,11 +109,8 @@ const ProductList = () => {
                     <Link to={`/edit/${product.id}`} className="action-edit">
                       <FaEdit />
                     </Link>
-                    <Link
-                      to={`/detail/${product.id}`}
-                      className="action-detail"
-                    >
-                      <FaEye />
+                    <Link onClick={() => handleOpenModal(product)} className="action-detail">
+                      <FaEye/>
                     </Link>
                     <Link
                       onClick={() => handleDeleteProduct(product.id)}
@@ -120,6 +130,7 @@ const ProductList = () => {
           <p>Let's add product</p>
         </div>
       )}
+      <ProductModal isOpen={isModalOpen} onClose={handleCloseModal} product={selectedProduct} />
     </div>
   );
 };
