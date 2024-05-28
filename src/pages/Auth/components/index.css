@@ -1,0 +1,53 @@
+.popup {
+    position: fixed;
+    top: 1%;
+    right:1% ;
+    width: 100%;
+    height: 100%;
+    display: flex;
+
+    justify-content: end;
+    align-items: flex-start;
+}
+
+.popup-inner {
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation-name: popup;
+    animation-duration: 0.5s;
+    transition: all 1s ease-in;
+}
+
+.popup .error {
+    background-color: #921919;
+    color: #fefefe;
+    opacity: 0.9;
+}
+
+.popup .success {
+    background-color: #1e7e34;
+    color: #fefefe;
+    opacity: 0.9;
+}
+
+.popup-inner h3 {
+    margin-top: 0;
+    text-transform: capitalize;
+}
+
+.popup-inner .icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@keyframes popup {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+

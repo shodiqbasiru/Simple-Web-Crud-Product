@@ -16,10 +16,16 @@ const AuthService = () => {
     return data.statusCode;
   }
 
+  const findByEmail = async (email) => {
+    const { data } = await axiosInstance.get(`/user/${email}`);
+    return data;
+  }
+
   return {
     login,
     register,
-    validate
+    validate,
+    findByEmail,
   };
 };
 
