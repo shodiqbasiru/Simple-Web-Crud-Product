@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useMemo, useState} from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import "./index.css";
 import ProductService from "../../../services/ProductService.js";
-import {Link, useNavigate} from "react-router-dom";
-import {FaEdit, FaPlus, FaSearch} from "react-icons/fa";
-import {FaEye, FaTrash} from "react-icons/fa6";
+import { Link, useNavigate } from "react-router-dom";
+import { FaEdit, FaPlus, FaSearch } from "react-icons/fa";
+import { FaEye, FaTrash } from "react-icons/fa6";
 import AuthContext from "../../../context/AuthContext.jsx";
 import ProductModal from "../ProductModal/ProductModal.jsx";
 
@@ -33,7 +33,7 @@ const ProductList = () => {
   const handleAddProduct = async () => {
     navigate("/add");
   };
-  
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -120,11 +120,17 @@ const ProductList = () => {
                     <Link to={`/edit/${product.id}`} className="action-edit">
                       <FaEdit />
                     </Link>
-                    <Link onClick={() => handleOpenModal(product)} className="action-detail">
-                      <FaEye/>
+                    <Link
+                      onClick={() => handleOpenModal(product)}
+                      className="action-detail"
+                    >
+                      <FaEye />
                     </Link>
-                    <Link onClick={() => handleOpenDeleteModal(product.id)} className="action-delete">
-                      <FaTrash/>
+                    <Link
+                      onClick={() => handleOpenDeleteModal(product.id)}
+                      className="action-delete"
+                    >
+                      <FaTrash />
                     </Link>
                   </div>
                 )}
@@ -138,16 +144,24 @@ const ProductList = () => {
           <p>Let's add product</p>
         </div>
       )}
-      <ProductModal isOpen={isModalOpen} onClose={handleCloseModal} product={selectedProduct} />
+      <ProductModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        product={selectedProduct}
+      />
       {isDeleteModalOpen && (
-          <div className="modal">
-            <div className="modal-content">
-              <h2>Confirm Delete</h2>
-              <p>Are you sure you want to delete this product?</p>
-              <button onClick={() => handleDeleteProduct(productToDelete)}>Yes</button>
-              <button onClick={handleCloseDeleteModal} className="cancel">No</button>
-            </div>
+        <div className="modal">
+          <div className="modal-content">
+            <h2>Confirm Delete</h2>
+            <p>Are you sure you want to delete this product?</p>
+            <button onClick={() => handleDeleteProduct(productToDelete)}>
+              Yes
+            </button>
+            <button onClick={handleCloseDeleteModal} className="cancel">
+              No
+            </button>
           </div>
+        </div>
       )}
     </div>
   );
