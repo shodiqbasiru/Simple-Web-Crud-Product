@@ -1,6 +1,6 @@
 .list-component h1 {
     margin: 20px;
-
+    
 }
 
 .empty-product {
@@ -47,7 +47,7 @@
 
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
     padding: 20px;
 }
@@ -71,6 +71,7 @@
 
 .card-body {
     display: block;
+    padding:  0 1rem;
 }
 
 .card-body h3 {
@@ -117,6 +118,10 @@ button {
     margin: 4px 2px;
     cursor: pointer;
 
+}
+
+button.cancel{
+    background-color: #f44336;
 }
 
 .action {

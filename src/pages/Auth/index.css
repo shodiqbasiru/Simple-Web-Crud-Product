@@ -1,44 +1,141 @@
 
-.login-form {
-    height: 80vh;
+
+.auth-form {
+    position: absolute;
+    inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    row-gap: 1rem;
+    background-image: url("../../assets/bg-auth.jpg");
 }
 
-.login-form form {
+.auth-form form {
+    background-color: #fefefe;
+    border-radius: 10px;
+    display: flex;
+    gap: 2.5rem;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);    
+}
+
+.auth-form form .form-logo {
+    padding: 2rem 0 2rem 2rem;
+}
+
+.auth-form form .form-logo h1 {
+    color: #4CAF50;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.auth-form form .form-logo h1:hover {
+    color: #3d8640;
+}
+
+.auth-form form .form-logo img {
+    width: 100%;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+
+}
+
+.auth-form form .form-input {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    padding: 2rem;
+    row-gap: 1rem;
+    background-color: #4CAF50;
+    color: #fefefe;
+    flex: 1;
 }
 
-.login-form form .input-group {
+.auth-form form .form-input .grid {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.auth-form form .form-input .input-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
 
-.login-form form label {
+
+
+.auth-form form .form-input label {
     flex: 1;
+    margin-bottom: 4px;
+    font-size: 14px;
+
 }
 
-.login-form form input {
+.auth-form form .form-input input {
     flex: 2;
-    padding: 5px;
+    padding: 12px 14px;
+    border: 1px solid #fefefe;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
 }
 
-.login-form form button {
+.auth-form form .form-input p {
+    text-align: center;
+    font-weight: 600;
+}
+
+.auth-form form .form-input p a {
+    font-weight: 300;
+}
+
+
+
+.auth-form form .form-input button {
     border-radius: 5px;
     padding: 10px;
     background-color: #4CAF50;
-    border: none;
+    border: 1px solid #fefefe;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-weight: bold;
     margin: 4px 2px;
     cursor: pointer;
+    transition: all 0.1s ease-in;
+}
+
+.auth-form form .form-input button:hover {
+    background-color: #fefefe;
+    color: #4CAF50;
+}
+
+
+/* For Tablet */
+@media (max-width: 992px) {
+    .auth-form form h1 {
+        font-size: 24px;
+    }
+
+
+    .auth-form form .form-input .input-group {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+    .auth-form form {
+        flex-direction: column;
+        gap: 0;
+
+    }
+
+    .auth-form form .form-logo {
+        padding: 2rem;
+    }
 }

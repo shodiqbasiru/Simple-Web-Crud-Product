@@ -1,0 +1,50 @@
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    animation-name: openModal;
+    animation-duration: 0.5s;
+    transition: all 1s ease-in;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-duration: 0.5s;
+    transition: all 1s;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.modal-content p {
+    margin: 10px 0;
+}
+
+.modal-content img {
+    width: 100%;
+    max-width: 300px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes openModal {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}

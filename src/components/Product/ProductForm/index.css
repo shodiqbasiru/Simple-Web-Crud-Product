@@ -1,5 +1,5 @@
 .product-form {
-    margin-top: 20px;
+    margin: 3rem auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,4 +57,14 @@
     flex-direction: column;
     margin-bottom: 1rem;
     gap: 10px;
+}
+
+.product-form form .form-img img {
+    object-fit: contain;    
+    border-radius: 5px;
+}
+
+.disabled {
+    background-color: #4caf4fb0 !important;
+    cursor: not-allowed !important;
 }
