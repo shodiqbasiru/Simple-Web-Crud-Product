@@ -1,6 +1,6 @@
-import {createBrowserRouter} from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home.jsx";
-import  ProductForm  from "../components/Product/ProductForm/ProductForm.jsx";
+import ProductForm from "../components/Product/ProductForm/ProductForm.jsx";
 import ProductList from "../components/Product/ProductList/ProductList.jsx";
 import Login from "../pages/Auth/Login.jsx";
 import Register from "../pages/Auth/Register.jsx";
@@ -22,8 +22,7 @@ const router = createBrowserRouter([
         path: "edit/:id",
         element: <ProductForm />,
       },
-    
-    ]
+    ],
   },
 
   {
@@ -33,8 +32,7 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
-  }
-   
+  },
 ]);
 
 export default router;

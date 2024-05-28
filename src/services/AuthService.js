@@ -11,9 +11,15 @@ const AuthService = () => {
     return data;
   }
 
+  const validate = async () => {
+    const { data } = await axiosInstance.get("/auth/validate-token");
+    return data.statusCode;
+  }
+
   return {
     login,
     register,
+    validate
   };
 };
 

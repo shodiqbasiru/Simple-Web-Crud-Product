@@ -3,6 +3,7 @@ import "./index.css";
 import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router-dom";
 import ProductService from "../../../services/ProductService";
+import ProtectedRoute from "../../../routes/ProtectedRoute";
 
 const ProductForm = () => {
   const { register, handleSubmit, clearErrors, reset, setValue } = useForm({
@@ -71,6 +72,7 @@ const ProductForm = () => {
   }, [id, setValue, productService]);
 
   return (
+    <ProtectedRoute>
     <div className="product-form">
       <h2>Add Product</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -108,6 +110,7 @@ const ProductForm = () => {
         <button type="submit">Add Product</button>
       </form>
     </div>
+    </ProtectedRoute>
   );
 };
 

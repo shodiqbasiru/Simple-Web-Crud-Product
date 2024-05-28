@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { useMemo } from "react";
 import AuthService from "../../services/AuthService.js";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import IconLogin from "../../assets/login.svg";
 
 const Login = () => {
   const { register, handleSubmit } = useForm({ mode: "onChange" });
@@ -24,24 +26,49 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const checkToken = async () => {
+      if (localStorage.getItem("token")) {
+        navigate("/");
+      }
+    };
+    checkToken();
+  });
+
   return (
     <div className="auth-form">
-      <Link to="/">Home</Link>
-      <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="input-group">
-          <label htmlFor="emailOrPhone">Email / Phone Number</label>
-          <input {...register("emailOrPhone")} type="text" id="emailOrPassword" />
+        <div className="form-logo">
+          <Link to="/">
+            <h1>Simple CRUD Product</h1>
+          </Link>
+          <img src={IconLogin} alt="" />
         </div>
-        <div className="input-group">
-          <label htmlFor="password">Password</label>
-          <input {...register("password")} type="password" id="password" />
+        <div className="form-input">
+          <h1>Login</h1>
+          <div className="input-group">
+            <label htmlFor="emailOrPhone">Email / Phone Number</label>
+            <input
+              {...register("emailOrPhone")}
+              type="text"
+              id="emailOrPassword"
+              placeholder="Enter your email or phone number"
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              {...register("password")}
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+            />
+          </div>
+          <button type="submit">Login</button>
+          <p>
+            Don't have an account? <Link to="/register">Register</Link>
+          </p>
         </div>
-        <button type="submit">Login</button>
-        <p>
-          {" "}
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
       </form>
     </div>
   );
