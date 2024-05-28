@@ -48,6 +48,10 @@ const ProductForm = () => {
     setPreviewImg(url);
   };
 
+  const generateSkuCode = () => {
+    return "SKU_" + Math.random().toString(20).substring(2, 10) + Math.random().toString(10).substring(2, 10);
+  };
+
   const onSubmit = async (data) => {
     try {
       const form = new FormData();
@@ -92,7 +96,9 @@ const ProductForm = () => {
   };
 
   useEffect(() => {
-    if (id) {
+    if (!id) {
+      setValue("skuCode", generateSkuCode());
+    } else {
       getProduct();
       setTitle("Edit Product");
       setButton("Update");
@@ -107,7 +113,7 @@ const ProductForm = () => {
         <div className="form-body">
           <div>
             <label htmlFor="skuCode">SKU Code</label>
-            <input {...register("skuCode")} type="text" id="skuCode" />
+            <input {...register("skuCode")} type="text" id="skuCode" disabled />
             {errors.skuCode && <p className="error">{errors.skuCode.message}</p>}
           </div>
           <div>

@@ -35,13 +35,7 @@ const ProductList = () => {
   const handleAddProduct = async () => {
     navigate("/add");
   };
-
-  // const handleDeleteProduct = async (id) => {
-  //   await productService.remove(id);
-  //   const { data } = await productService.getAll();
-  //   setProducts(data);
-  // };
-
+  
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };

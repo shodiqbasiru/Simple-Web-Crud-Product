@@ -59,6 +59,11 @@
     gap: 10px;
 }
 
+.product-form form .form-img img {
+    object-fit: contain;    
+    border-radius: 5px;
+}
+
 .disabled {
     background-color: #4caf4fb0 !important;
     cursor: not-allowed !important;
