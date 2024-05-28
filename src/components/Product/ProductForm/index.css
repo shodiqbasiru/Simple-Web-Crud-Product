@@ -58,3 +58,8 @@
     margin-bottom: 1rem;
     gap: 10px;
 }
+
+.disabled {
+    background-color: #4caf4fb0 !important;
+    cursor: not-allowed !important;
+}

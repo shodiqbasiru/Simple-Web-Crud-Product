@@ -6,9 +6,17 @@ import { useMemo } from "react";
 import AuthService from "../../services/AuthService.js";
 import { useNavigate } from "react-router-dom";
 import IconRegister from "../../assets/register.svg";
+import * as z  from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
+const schema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  email: z.string().email({ message: "Invalid email" }),
+  phoneNumber: z.string().min(1, { message: "Phone Number is required" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
+});
 const Register = () => {
-  const { register, handleSubmit } = useForm({ mode: "onChange" });
+  const { register, handleSubmit,formState:{errors} } = useForm({ mode: "onChange",resolver:zodResolver(schema) });
   const authService = useMemo(() => AuthService(), []);
   const navigate = useNavigate();
 
@@ -40,6 +48,8 @@ const Register = () => {
             <div className="input-group">
               <label htmlFor="name">Name</label>
               <input {...register("name")} type="text" id="name" placeholder="Enter your name" />
+              {errors.name && <p className="error">{errors.name.message}</p>}
+
             </div>
             <div className="input-group">
               <label htmlFor="email">Email </label>

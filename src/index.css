@@ -16,4 +16,16 @@ body {
 .container {
     margin: 0 auto;
     padding: 0 1rem;
+    min-height: 100vh;
 }
+
+.error{
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 5px;
+    text-align: start;
+    text-transform: lowercase;
+}
+
+

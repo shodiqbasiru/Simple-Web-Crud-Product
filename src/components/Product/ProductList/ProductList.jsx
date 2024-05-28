@@ -13,10 +13,13 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [productToDelete, setProductToDelete] = useState(null);
+
   const productService = useMemo(() => ProductService(), []);
   const baseImgUrl = "http://localhost:8080";
   const { isLogin, setIsLogin } = useContext(AuthContext);
-  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const navigate = useNavigate();
 
@@ -33,11 +36,11 @@ const ProductList = () => {
     navigate("/add");
   };
 
-  const handleDeleteProduct = async (id) => {
-    await productService.remove(id);
-    const { data } = await productService.getAll();
-    setProducts(data);
-  };
+  // const handleDeleteProduct = async (id) => {
+  //   await productService.remove(id);
+  //   const { data } = await productService.getAll();
+  //   setProducts(data);
+  // };
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -63,6 +66,22 @@ const ProductList = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleOpenDeleteModal = (id) => {
+    setProductToDelete(id);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setIsDeleteModalOpen(false);
+  };
+
+  const handleDeleteProduct = async (id) => {
+    await productService.remove(id);
+    const { data } = await productService.getAll();
+    setProducts(data);
+    setIsDeleteModalOpen(false);
   };
 
   return (
@@ -112,11 +131,8 @@ const ProductList = () => {
                     <Link onClick={() => handleOpenModal(product)} className="action-detail">
                       <FaEye/>
                     </Link>
-                    <Link
-                      onClick={() => handleDeleteProduct(product.id)}
-                      className="action-delete"
-                    >
-                      <FaTrash />
+                    <Link onClick={() => handleOpenDeleteModal(product.id)} className="action-delete">
+                      <FaTrash/>
                     </Link>
                   </div>
                 )}
@@ -131,6 +147,16 @@ const ProductList = () => {
         </div>
       )}
       <ProductModal isOpen={isModalOpen} onClose={handleCloseModal} product={selectedProduct} />
+      {isDeleteModalOpen && (
+          <div className="modal">
+            <div className="modal-content">
+              <h2>Confirm Delete</h2>
+              <p>Are you sure you want to delete this product?</p>
+              <button onClick={() => handleDeleteProduct(productToDelete)}>Yes</button>
+              <button onClick={handleCloseDeleteModal} className="cancel">No</button>
+            </div>
+          </div>
+      )}
     </div>
   );
 };

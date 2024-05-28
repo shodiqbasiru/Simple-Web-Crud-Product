@@ -1,3 +1,5 @@
+
+
 .auth-form {
     position: absolute;
     inset: 0;
@@ -60,6 +62,8 @@
     flex-direction: column;
     margin-bottom: 10px;
 }
+
+
 
 .auth-form form .form-input label {
     flex: 1;

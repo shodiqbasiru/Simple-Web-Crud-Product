@@ -8,9 +8,16 @@ import AuthService from "../../services/AuthService.js";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import IconLogin from "../../assets/login.svg";
+import * as z   from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schema = z.object({
+  emailOrPhone: z.string().min(1, { message: "Email or Phone Number is required" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
+});
 
 const Login = () => {
-  const { register, handleSubmit } = useForm({ mode: "onChange" });
+  const { register, handleSubmit,formState:{errors}} = useForm({ mode: "onChange",resolver: zodResolver(schema) });
   const authService = useMemo(() => AuthService(), []);
   const navigate = useNavigate();
 
@@ -54,6 +61,7 @@ const Login = () => {
               id="emailOrPassword"
               placeholder="Enter your email or phone number"
             />
+            {errors.emailOrPhone && <p className="error">{errors.emailOrPhone.message}</p>}
           </div>
           <div className="input-group">
             <label htmlFor="password">Password</label>
@@ -63,6 +71,7 @@ const Login = () => {
               id="password"
               placeholder="Enter your password"
             />
+            {errors.password && <p className="error">{errors.password.message}</p>}
           </div>
           <button type="submit">Login</button>
           <p>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../services/AuthService";
 
-const ProtectedRoute = ({ children }) => {
+export const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
   const authService = AuthService();
 
@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
     const checkToken = async () => {
       if (
         !localStorage.getItem("token") ||
-        !(await authService.validateToken() === 200)
+        !(await authService.validate() === 200)
       ) {
         navigate("/login");
       }
@@ -20,5 +20,3 @@ const ProtectedRoute = ({ children }) => {
 
   return children;
 };
-
-export default ProtectedRoute;
