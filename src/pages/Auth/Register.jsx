@@ -1,13 +1,11 @@
-import React from "react";
+import React, {useMemo} from "react";
 import "./index.css";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { useMemo } from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {useForm} from "react-hook-form";
 import AuthService from "../../services/AuthService.js";
-import { useNavigate } from "react-router-dom";
 import IconRegister from "../../assets/register.svg";
-import * as z  from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import {zodResolver} from "@hookform/resolvers/zod";
 
 const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),

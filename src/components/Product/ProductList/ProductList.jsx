@@ -1,11 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, {useContext, useEffect, useMemo, useState} from "react";
 import "./index.css";
 import ProductService from "../../../services/ProductService.js";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { FaEdit, FaPlus, FaSearch } from "react-icons/fa";
-import { FaEye, FaTrash } from "react-icons/fa6";
-import { useContext } from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {FaEdit, FaPlus, FaSearch} from "react-icons/fa";
+import {FaEye, FaTrash} from "react-icons/fa6";
 import AuthContext from "../../../context/AuthContext.jsx";
 import ProductModal from "../ProductModal/ProductModal.jsx";
 
